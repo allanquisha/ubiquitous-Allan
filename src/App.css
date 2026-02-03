@@ -1,7 +1,7 @@
 /* Card */
 .card {
-  width: min(92%, 420px);
-  padding: 40px 30px 45px;
+  width: min(90%, 500px);
+  padding: clamp(30px, 5vw, 50px);
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(18px);
   border-radius: 28px;
@@ -11,6 +11,8 @@
     inset 0 0 0 1px rgba(255,255,255,0.4);
   position: relative;
   animation: cardIn 1.1s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 @keyframes cardIn {
@@ -31,7 +33,7 @@
 }
 
 .emoji {
-  font-size: 68px;
+  font-size: clamp(48px, 10vw, 68px);
   margin-bottom: 12px;
   animation: heartbeat 1.8s infinite;
 }
@@ -45,27 +47,30 @@
 
 h2 {
   font-family: "Playfair Display", serif;
-  font-size: 28px;
+  font-size: clamp(22px, 5vw, 28px);
   color: #4a1c2f;
   margin-bottom: 30px;
   line-height: 1.35;
+  padding: 0 10px;
 }
 
 .buttons {
   position: relative;
-  height: 78px;
+  height: clamp(60px, 15vw, 80px);
+  margin: 20px 0;
 }
 
 button {
   position: absolute;
-  padding: 14px 36px;
+  padding: clamp(12px, 2.5vw, 16px) clamp(24px, 5vw, 40px);
   border-radius: 40px;
   border: none;
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  white-space: nowrap;
 }
 
 button:active {
@@ -73,29 +78,34 @@ button:active {
 }
 
 #yes {
-  left: 12%;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
   background: linear-gradient(135deg, #ff4d6d, #ff758f);
   color: #fff;
   box-shadow: 0 15px 35px rgba(255,77,109,0.55);
 }
 
 #yes:hover {
-  transform: translateY(-3px);
+  transform: translateY(calc(-50% - 3px));
   box-shadow: 0 20px 40px rgba(255,77,109,0.7);
 }
 
 #no {
-  left: 55%;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgba(255,255,255,0.9);
   color: #777;
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .hint {
-  margin-top: 28px;
-  font-size: 13px;
+  margin-top: 20px;
+  font-size: clamp(11px, 2.5vw, 13px);
   color: #6b6b6b;
   font-style: italic;
+  padding: 0 10px;
 }
 
 /* Floating depth hearts */
@@ -121,7 +131,8 @@ button:active {
 
 /* Success card */
 .success-card {
-  min-height: 500px;
+  min-height: auto;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,7 +156,7 @@ button:active {
 }
 
 .celebration-emoji {
-  font-size: 80px;
+  font-size: clamp(50px, 12vw, 80px);
   animation: bounce 1s infinite;
 }
 
@@ -155,7 +166,7 @@ button:active {
 }
 
 .gif-container {
-  margin: 25px 0;
+  margin: 20px 0;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -163,7 +174,7 @@ button:active {
 
 .celebration-gif {
   width: 100%;
-  max-width: 300px;
+  max-width: clamp(200px, 60vw, 350px);
   height: auto;
   display: block;
   margin: 0 auto;
@@ -171,23 +182,73 @@ button:active {
 }
 
 .success-message {
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   color: #4a1c2f;
   line-height: 1.6;
   margin-top: 20px;
-  padding: 0 10px;
+  padding: 0 15px;
   font-weight: 400;
 }
 
 /* Responsive */
 @media (max-width: 480px) {
-  h2 { font-size: 23px; }
-  .emoji { font-size: 58px; }
-  button { padding: 12px 28px; font-size: 15px; }
-  #yes { left: 8%; }
-  #no { left: 55%; }
+  .card {
+    width: 95%;
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
   
-  .celebration-emoji { font-size: 60px; }
-  .success-message { font-size: 14px; }
-  .celebration-gif { max-width: 250px; }
+  .buttons {
+    height: 50px;
+  }
+  
+  #yes, #no {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  #yes {
+    left: 3%;
+  }
+  
+  #no {
+    right: 3%;
+  }
+}
+
+@media (max-width: 350px) {
+  h2 {
+    font-size: 18px;
+  }
+  
+  .emoji {
+    font-size: 40px;
+  }
+  
+  button {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+  
+  .hint {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 600px) {
+  /* Landscape tablets/small screens */
+  .card {
+    max-height: 85vh;
+    padding: 20px;
+  }
+  
+  .emoji {
+    font-size: 50px;
+    margin-bottom: 8px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
 }
