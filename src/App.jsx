@@ -6,7 +6,7 @@ import './App.css'
 const CELEBRATION_GIF = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXl5MnJ5aHcxZjN5Y2JiYzl1bzNzMDZ2aWhqbTR0Y2o1eWpqdXdhYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vPzbDN4rBxuvtpSpzF/giphy.gif"
 
 // 💌 CUSTOMIZE YOUR MESSAGE HERE! 💌
-const SUCCESS_MESSAGE = "I can't wait for you to be my Valentine! <3 You've just made me the happiest papoi ever! 💖✨"
+const SUCCESS_MESSAGE = "I can't wait for you to be my Valentine! <3 You've just made me the happiest papoi ever! 💖✨-Allan"
 
 function App() {
   const [accepted, setAccepted] = useState(false)
